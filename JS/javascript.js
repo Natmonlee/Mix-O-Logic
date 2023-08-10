@@ -72,7 +72,7 @@ const getResult = async () => {
                         if (newDivFront.clientHeight > newDivBack.clientHeight) {
                             biggestSide = newDivFront.clientHeight;
                         } else {
-                            biggestSide = newDivBack.clientHeight;
+                            const biggestSide = newDivBack.clientHeight;
                         }
                         let newDivHeight = Math.ceil(biggestSide);
                         currentDiv.style.height = newDivHeight + 'px';
@@ -90,6 +90,11 @@ const getResult = async () => {
                 for (let element of allInnerDivs) {
                     element.style.height = largestElementHeight + 'px';
                 }
+
+                /*const allCards = resultsDiv.getElementsByClassName('cocktailCard');
+                for (let element of allCards) {
+                    element.style.width = 
+                }*/
             }
         }
     }
