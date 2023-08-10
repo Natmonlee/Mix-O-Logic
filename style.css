@@ -29,7 +29,7 @@ body {
     font-size: 8rem;
     text-align: center;
     color: rgba(141, 51, 114, 0.9);
-    margin-bottom: 1rem;
+    margin: 1rem;
     text-shadow: 3px 3px 7px rgba(141, 51, 114, 0.71);
 }
 
@@ -135,11 +135,12 @@ input[type="text"] {
     color: magenta;
     font-size: 1.5rem;
     height: fit-content;
+    margin: 0.5rem;
 }
 
 .ingredients {
     white-space: pre-wrap;
-    margin: 0;
+    margin: 0 0.5rem 0.5rem;
     font-size: 1.25rem;
     color: black;
     height: fit-content;
@@ -147,7 +148,7 @@ input[type="text"] {
 
 .instructions {
     white-space: pre-wrap;
-    margin: 0;
+    margin: 0 0.5rem 0.5rem;
     font-size: 1.25rem;
     color: white;
     height: fit-content;

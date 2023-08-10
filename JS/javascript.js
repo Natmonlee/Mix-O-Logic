@@ -66,11 +66,18 @@ const getResult = async () => {
                     cocktailIngredients.innerHTML = ingredientsList;
                     cocktailIngredients.classList.add("ingredients");
                     newDivFront.appendChild(cocktailIngredients);
-                    const makeDivFitText = (currentDiv, currentText) => {
-                        let newDivHeight = Math.ceil(currentText.clientHeight);
+                    
+                    const makeDivFitText = (currentDiv) => {
+                        let biggestSide;
+                        if (newDivFront.clientHeight > newDivBack.clientHeight) {
+                            biggestSide = newDivFront.clientHeight;
+                        } else {
+                            biggestSide = newDivBack.clientHeight;
+                        }
+                        let newDivHeight = Math.ceil(biggestSide);
                         currentDiv.style.height = newDivHeight + 'px';
                     };
-                    makeDivFitText(newDivInner, newDivFront);
+                    makeDivFitText(newDivInner);
                 }
                 let largestElementHeight = 0;
                 for (element of resultsDiv.getElementsByClassName('innerDiv')) {
