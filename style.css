@@ -41,8 +41,9 @@ body {
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    width: 83%;
-    white-space:pre-wrap;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: fit-content;
     
 }
 
@@ -115,6 +116,7 @@ input[type="text"] {
 .front {
     backface-visibility: hidden;
     position: absolute;
+    width: 100%;
  
     
 }
@@ -123,6 +125,7 @@ input[type="text"] {
     backface-visibility: hidden;
     transform: rotateY(180deg);
     position: absolute;
+    width: 100%;
     
 }
 

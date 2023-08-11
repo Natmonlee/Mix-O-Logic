@@ -45,8 +45,8 @@ const getResult = async () => {
                     newDivFront.appendChild(cocktailIngredients);
                     newDiv.classList.add("cocktailCard");
                     newDivInner.classList.add("innerDiv", "transformAnimation");
-                    newDivFront.classList.add("front");
-                    newDivBack.classList.add("back");
+                    newDivFront.classList.add("front", "side");
+                    newDivBack.classList.add("back", "side");
                     function rotateCard() {
                         newDivInner.classList.toggle("rotate");
                     }
@@ -66,35 +66,24 @@ const getResult = async () => {
                     cocktailIngredients.innerHTML = ingredientsList;
                     cocktailIngredients.classList.add("ingredients");
                     newDivFront.appendChild(cocktailIngredients);
-                    
-                    const makeDivFitText = (currentDiv) => {
-                        let biggestSide;
-                        if (newDivFront.clientHeight > newDivBack.clientHeight) {
-                            biggestSide = newDivFront.clientHeight;
-                        } else {
-                            const biggestSide = newDivBack.clientHeight;
-                        }
-                        let newDivHeight = Math.ceil(biggestSide);
-                        currentDiv.style.height = newDivHeight + 'px';
-                    };
-                    makeDivFitText(newDivInner);
                 }
-                let largestElementHeight = 0;
-                for (element of resultsDiv.getElementsByClassName('innerDiv')) {
-                    let currentHeight = Math.ceil(element.clientHeight);
-                    if (currentHeight > largestElementHeight) {
-                        largestElementHeight = currentHeight;
+                function sizeDivs() {
+                    let largestElementHeight = 0;
+                    for (element of resultsDiv.getElementsByClassName('side')) {
+                        let currentHeight = Math.ceil(element.clientHeight);
+                        if (currentHeight > largestElementHeight) {
+                            largestElementHeight = currentHeight;
+                        }
+                    }
+
+                    const allInnerDivs = resultsDiv.getElementsByClassName('innerDiv');
+                    for (let element of allInnerDivs) {
+                        element.style.height = largestElementHeight + 'px';
                     }
                 }
-                const allInnerDivs = resultsDiv.getElementsByClassName('innerDiv');
-                for (let element of allInnerDivs) {
-                    element.style.height = largestElementHeight + 'px';
-                }
 
-                /*const allCards = resultsDiv.getElementsByClassName('cocktailCard');
-                for (let element of allCards) {
-                    element.style.width = 
-                }*/
+                sizeDivs();
+                window.onresize = sizeDivs;
             }
         }
     }
