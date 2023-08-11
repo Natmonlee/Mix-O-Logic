@@ -37,6 +37,12 @@ const getResult = async () => {
                     let cocktailNameBack = document.createElement('h1');
                     let cocktailInstructions = document.createElement('p');
                     let cocktailIngredients = document.createElement('p');
+                    let subheadingFront = document.createElement('h2');
+                    let subheadingBack = document.createElement('h2');
+                    let flipDivFront = document.createElement('div');
+                    let flipDivBack = document.createElement('div');
+                    let flipInstructionFront = document.createElement('div');
+                    let flipInstructionBack = document.createElement('div');
                     resultsDiv.appendChild(newDiv);
                     newDiv.appendChild(newDivInner);
                     newDivInner.appendChild(newDivFront);
@@ -47,25 +53,37 @@ const getResult = async () => {
                     newDivInner.classList.add("innerDiv", "transformAnimation");
                     newDivFront.classList.add("front", "side");
                     newDivBack.classList.add("back", "side");
+                    flipDivBack.classList.add("flipDiv");
+                    flipDivFront.classList.add("flipDiv");
+                    flipInstructionBack.classList.add("flipInstruction");
+                    flipInstructionFront.classList.add("flipInstruction");
                     function rotateCard() {
                         newDivInner.classList.toggle("rotate");
                     }
                     newDiv.addEventListener("click", rotateCard);
-                    cocktailNameFront.innerHTML = number.name;
-                    cocktailNameFront.classList.add("cocktailName");
-                    cocktailNameBack.innerHTML = number.name;
-                    cocktailNameBack.classList.add("cocktailName");
+                    cocktailNameFront.innerHTML = `${number.name}`;
+                    cocktailNameBack.innerHTML = `${number.name}`;
+                    subheadingFront.innerHTML = 'Ingredients';
+                    subheadingBack.innerHTML = 'Instructions';
                     newDivFront.appendChild(cocktailNameFront);
                     newDivBack.appendChild(cocktailNameBack);
                     cocktailInstructions.innerHTML = number.instructions;
                     cocktailInstructions.classList.add("instructions");
                     newDivFront.appendChild(cocktailNameFront);
+                    newDivFront.appendChild(subheadingFront);
                     newDivFront.appendChild(cocktailInstructions);
                     newDivBack.appendChild(cocktailNameBack);
+                    newDivBack.appendChild(subheadingBack);
                     newDivBack.appendChild(cocktailInstructions);
                     cocktailIngredients.innerHTML = ingredientsList;
                     cocktailIngredients.classList.add("ingredients");
                     newDivFront.appendChild(cocktailIngredients);
+                    newDivFront.appendChild(flipDivFront);
+                    newDivBack.appendChild(flipDivBack);
+                    flipDivBack.appendChild(flipInstructionBack);
+                    flipDivFront.appendChild(flipInstructionFront);
+                    flipInstructionBack.innerHTML = 'Flip for ingredients';
+                    flipInstructionFront.innerHTML = 'Flip for instructions';
                 }
                 function sizeDivs() {
                     let largestElementHeight = 0;

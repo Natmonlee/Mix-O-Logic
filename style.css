@@ -44,7 +44,7 @@ body {
     padding-left: 1rem;
     padding-right: 1rem;
     width: fit-content;
-    
+
 }
 
 
@@ -89,24 +89,21 @@ input[type="text"] {
     justify-content: space-evenly;
     margin: 1rem;
     padding: 0.5rem 1rem 1rem;
-    
-    
+
+
 }
 
 .cocktailCard {
     perspective: 1000px;
-    
+
 }
 
 .innerDiv {
     transform-style: preserve-3d;
-    border: 1px purple solid;
-    background-color: rgba(141, 51, 114, 0.5);
+    border: 1px rgb(193, 3, 203) solid;
+    background-color: rgba(141, 51, 114, 0.715);
     box-shadow: -2px 2px 2px black;
     width: 250px;
-
-    
-    
 }
 
 .transformAnimation {
@@ -117,8 +114,8 @@ input[type="text"] {
     backface-visibility: hidden;
     position: absolute;
     width: 100%;
- 
-    
+
+
 }
 
 .back {
@@ -126,21 +123,47 @@ input[type="text"] {
     transform: rotateY(180deg);
     position: absolute;
     width: 100%;
-    
+
 }
 
 .rotate {
     transform: rotateY(180deg);
 }
 
-.cocktailName {
+h1 {
     text-transform: capitalize;
-    color: magenta;
-    font-size: clamp(14px, 1.5rem, 1.5rem);
+    color: rgb(255, 17, 164);
+    font-size: clamp(16px, 1.7rem, 1.7rem);
     height: fit-content;
-    margin: 0.5rem;
     white-space: pre-wrap;
     text-align: center;
+    margin: 0;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 82);
+
+}
+
+h2 {
+    color: rgb(40, 4, 37);
+    font-size: clamp(14px, 1.4rem, 1.4rem);
+    height: fit-content;
+    text-align: center;
+    margin: 0;
+
+}
+
+.flipDiv {
+    /*flex-direction: column;
+    align-content: flex-end;*/
+
+
+
+}
+
+.flipInstruction {
+    color: rgb(21, 2, 20);
+    font-size: clamp(13px, 1.2rem, 1.2rem);
+
+    text-align: end;
 }
 
 .ingredients {
@@ -149,6 +172,7 @@ input[type="text"] {
     color: black;
     height: fit-content;
     white-space: pre-wrap;
+
 }
 
 .instructions {
@@ -157,6 +181,7 @@ input[type="text"] {
     color: black;
     height: fit-content;
     white-space: pre-wrap;
+
 }
 
 .footer {
