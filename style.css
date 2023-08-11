@@ -104,6 +104,8 @@ input[type="text"] {
     background-color: rgba(141, 51, 114, 0.715);
     box-shadow: -2px 2px 2px black;
     width: 250px;
+    display: flex;
+    flex-direction: column;
 }
 
 .transformAnimation {
@@ -114,6 +116,9 @@ input[type="text"] {
     backface-visibility: hidden;
     position: absolute;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
 
 }
@@ -123,8 +128,13 @@ input[type="text"] {
     transform: rotateY(180deg);
     position: absolute;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
 
 }
+
 
 .rotate {
     transform: rotateY(180deg);
@@ -151,19 +161,11 @@ h2 {
 
 }
 
-.flipDiv {
-    /*flex-direction: column;
-    align-content: flex-end;*/
-
-
-
-}
-
 .flipInstruction {
     color: rgb(21, 2, 20);
     font-size: clamp(13px, 1.2rem, 1.2rem);
-
     text-align: end;
+    margin-top: auto;
 }
 
 .ingredients {
