@@ -1,6 +1,5 @@
 const textInput = document.getElementById("inputBox");
 const resultsDiv = document.getElementById('resultsList');
-document.getElementById("inputBox").defaultValue = "banana";
 let flipInstructionHeight;
 
 const getResult = async () => {
