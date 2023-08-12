@@ -16,7 +16,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    white-space: nowrap;
     align-items: center;
     cursor: url(./Images/cursor.png), auto;
     scrollbar-gutter: stable both-edges;
@@ -42,7 +41,6 @@ body {
     margin-bottom: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    width: fit-content;
 }
 
 .formContent {
