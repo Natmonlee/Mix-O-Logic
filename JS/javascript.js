@@ -28,20 +28,19 @@ const getResult = async () => {
                         if (i === number.ingredients.length - 1) {
                             ingredientsList += `•${number.ingredients[i]}`;
                         } else {
-                            ingredientsList += `•${number.ingredients[i]} <br>`;
+                            ingredientsList += `•${number.ingredients[i]}<br>`;
                         }
                     }
-                    
-                                     
-                    let newDiv = document.createElement('div');
-                    newDiv.classList.add("cocktailCard");
 
-                    let newDivInner = document.createElement('div');
-                    newDivInner.classList.add("innerDiv", "transformAnimation", "toResize");
+                    let cocktailCard = document.createElement('div');
+                    cocktailCard.classList.add("cocktailCard");
 
-                    let newDivFront = document.createElement('div');
-                    newDivFront.classList.add("front", "side");
-                    
+                    let cardInner = document.createElement('div');
+                    cardInner.classList.add("innerDiv", "transformAnimation", "toResize");
+
+                    let cardFront = document.createElement('div');
+                    cardFront.classList.add("front", "side");
+
                     let frontContent = document.createElement('div');
                     frontContent.classList.add("content");
 
@@ -56,8 +55,8 @@ const getResult = async () => {
                     flipInstructionFront.classList.add("flipInstruction");
                     flipInstructionFront.innerHTML = 'Flip for instructions';
 
-                    let newDivBack = document.createElement('div');
-                    newDivBack.classList.add("back", "side");
+                    let cardBack = document.createElement('div');
+                    cardBack.classList.add("back", "side");
 
                     let backContent = document.createElement('div');
                     backContent.classList.add("content");
@@ -72,33 +71,30 @@ const getResult = async () => {
                     let flipInstructionBack = document.createElement('div');
                     flipInstructionBack.classList.add("flipInstruction");
                     flipInstructionBack.innerHTML = 'Flip for ingredients';
-                  
-                    resultsDiv.appendChild(newDiv);
-                    newDiv.appendChild(newDivInner);
 
-                    newDivInner.appendChild(newDivFront);
-                    newDivInner.appendChild(newDivBack);
+                    resultsDiv.appendChild(cocktailCard);
+                    cocktailCard.appendChild(cardInner);
 
-                    newDivFront.appendChild(frontContent);
-                    newDivBack.appendChild(backContent);
+                    cardInner.appendChild(cardFront);
+                    cardInner.appendChild(cardBack);
+
+                    cardFront.appendChild(frontContent);
+                    cardBack.appendChild(backContent);
 
                     frontContent.appendChild(cocktailNameFront);
                     frontContent.appendChild(subheadingFront);
                     frontContent.appendChild(cocktailIngredients);
-                    newDivFront.appendChild(flipInstructionFront);
-                    
+                    cardFront.appendChild(flipInstructionFront);
+
                     backContent.appendChild(cocktailNameBack);
                     backContent.appendChild(subheadingBack);
                     backContent.appendChild(cocktailInstructions);
-                    newDivBack.appendChild(flipInstructionBack);
-                    
-                    
+                    cardBack.appendChild(flipInstructionBack);
+
                     function rotateCard() {
-                        newDivInner.classList.toggle("rotate");
+                        cardInner.classList.toggle("rotate");
                     }
-                    newDiv.addEventListener("click", rotateCard);
-                   
-              
+                    cocktailCard.addEventListener("click", rotateCard);
                 }
 
                 function sizeDivs() {
@@ -113,22 +109,13 @@ const getResult = async () => {
                     let flipInstruction = resultsDiv.getElementsByClassName('flipInstruction');
                     let firstFlipInstruction = flipInstruction[0];
 
-                   let allInnerDivs = resultsDiv.getElementsByClassName('innerDiv');
+                    let allInnerDivs = resultsDiv.getElementsByClassName('innerDiv');
                     for (let element of allInnerDivs) {
                         element.style.height = largestElementHeight + firstFlipInstruction.clientHeight + 'px';
                     }
-
-                 
-                    
                 }
-
-                
-                
-
-                
                 sizeDivs();
                 window.onresize = sizeDivs;
-
             }
         }
     }
