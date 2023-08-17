@@ -179,6 +179,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     background-color: rgba(141, 51, 114, 0.3);
+    font-size: clamp(9px, 1rem, 1rem);
 }
 
 .photoCredit {
