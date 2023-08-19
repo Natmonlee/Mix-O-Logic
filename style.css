@@ -1,199 +1,198 @@
 html {
-    font-size: 1vw;
-    cursor: url(./Images/cursor.png), auto;
-    overflow-x: hidden;
-    overflow-y: overlay;
-    height: 100%;
+  font-size: 1vw;
+  cursor: url(./Images/cursor.png), auto;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  height: 100%;
 }
 
 body {
-    width: 100%;
-    font-family: "Merriweather", serif;
-    display: flex;
-    flex-direction: column;
-    background-image: url(./Images/landingPageBackground.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    align-items: center;
-    cursor: url(./Images/cursor.png), auto;
-    scrollbar-gutter: stable both-edges;
-    margin: 0;
-    height: 100%;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  display: flex;
+  flex-direction: column;
+  background-image: url(./Images/landingPageBackground.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  align-items: center;
+  cursor: url(./Images/cursor.png), auto;
+  scrollbar-gutter: stable both-edges;
+  margin: 0;
+  height: 100%;
 }
 
 .heading h1 {
-    font-size: clamp(16px, 8rem, 8rem);
-    text-align: center;
-    color: rgba(141, 51, 114, 0.9);
-    margin: 1rem;
-    text-shadow: 3px 3px 7px rgba(141, 51, 114, 0.71);
+  font-size: clamp(16px, 8rem, 8rem);
+  text-align: center;
+  color: rgba(141, 51, 114, 0.9);
+  margin: 1rem;
+  text-shadow: 3px 3px 7px rgba(141, 51, 114, 0.71);
 }
 
 .formText {
-    color: white;
-    text-align: center;
-    background-color: rgba(141, 51, 114, 0.5);
-    font-size: clamp(13px, 1.5rem, 1.5rem);
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  color: white;
+  text-align: center;
+  background-color: rgba(141, 51, 114, 0.5);
+  font-size: clamp(13px, 1.5rem, 1.5rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .formContent {
-    color: white;
-    background-color: rgba(141, 51, 114, 0.5);
-    width: fit-content;
-    padding: 0.75rem;
-    margin-bottom: 0.5rem;
-    position: relative;
+  color: white;
+  background-color: rgba(141, 51, 114, 0.5);
+  width: fit-content;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  position: relative;
 }
 
 #textInput {
-    display: inline;
+  display: inline;
 }
 
 #inputBox {
-    height: 2.5rem;
-    width: 20rem;
+  height: 2.5rem;
+  width: 20rem;
 }
 
 input[type="text"] {
-    font-size: clamp(13px, 1.5rem, 1.5rem);
+  font-size: clamp(13px, 1.5rem, 1.5rem);
 }
 
 #radioButtons {
-    font-size: clamp(13px, 1.5rem, 1.5rem);
-    display: inline;
+  font-size: clamp(13px, 1.5rem, 1.5rem);
+  display: inline;
 }
 
 #submitButton {
-    display: inline;
-    margin-left: 1rem;
+  display: inline;
+  margin-left: 1rem;
 }
 
 #resultsList {
-    display: flex;
-    width: 98%;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 1rem;
-    justify-content: space-evenly;
-    margin: 1rem;
-    padding: 0.5rem 1rem 1rem;
-    font-size: clamp(15px, 1.7rem, 1.7rem);
-    font-weight: bold;
+  display: flex;
+  width: 98%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-evenly;
+  margin: 1rem;
+  padding: 0.5rem 1rem 1rem;
+  font-size: clamp(15px, 1.7rem, 1.7rem);
+  font-weight: bold;
 }
 
 .cocktailCard {
-    perspective: 1000px;
+  perspective: 1000px;
 }
 
 .innerDiv {
-    transform-style: preserve-3d;
-    border: 1px rgb(193, 3, 203) solid;
-    background-color: rgba(141, 51, 114, 0.715);
-    box-shadow: -2px 2px 2px black;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
+  transform-style: preserve-3d;
+  border: 1px rgb(193, 3, 203) solid;
+  background-color: rgba(141, 51, 114, 0.715);
+  box-shadow: -2px 2px 2px black;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
 }
 
 .transformAnimation {
-    transition: transform 0.8s ease;
+  transition: transform 0.8s ease;
 }
 
 .front {
-    backface-visibility: hidden;
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .back {
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-
 .rotate {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 h1 {
-    text-transform: capitalize;
-    color: rgb(255, 17, 164);
-    font-size: clamp(16px, 1.7rem, 1.7rem);
-    height: fit-content;
-    white-space: pre-wrap;
-    text-align: center;
-    margin: 0;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 82);
+  text-transform: capitalize;
+  color: rgb(255, 17, 164);
+  font-size: clamp(16px, 1.7rem, 1.7rem);
+  height: fit-content;
+  white-space: pre-wrap;
+  text-align: center;
+  margin: 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 82);
 }
 
 h2 {
-    color: rgb(40, 4, 37);
-    font-size: clamp(14px, 1.4rem, 1.4rem);
-    height: fit-content;
-    text-align: center;
-    margin: 0;
+  color: rgb(40, 4, 37);
+  font-size: clamp(14px, 1.4rem, 1.4rem);
+  height: fit-content;
+  text-align: center;
+  margin: 0;
 }
 
 .flipInstruction {
-    color: rgb(21, 2, 20);
-    font-size: clamp(13px, 1.2rem, 1.2rem);
-    text-align: end;
-    margin-top: auto;
+  color: rgb(21, 2, 20);
+  font-size: clamp(13px, 1.2rem, 1.2rem);
+  text-align: end;
+  margin-top: auto;
 }
 
 .ingredients {
-    margin: 0 0.5rem 0.5rem;
-    font-size: clamp(13px, 1.25rem, 1.25rem);
-    color: black;
-    height: fit-content;
-    white-space: pre-wrap;
+  margin: 0 0.5rem 0.5rem;
+  font-size: clamp(13px, 1.25rem, 1.25rem);
+  color: black;
+  height: fit-content;
+  white-space: pre-wrap;
 }
 
 .instructions {
-    margin: 0 0.5rem 0.5rem;
-    font-size: clamp(13px, 1.25rem, 1.25rem);
-    color: black;
-    height: fit-content;
-    white-space: pre-wrap;
+  margin: 0 0.5rem 0.5rem;
+  font-size: clamp(13px, 1.25rem, 1.25rem);
+  color: black;
+  height: fit-content;
+  white-space: pre-wrap;
 }
 
 .footer {
-    margin-top: auto;
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background-color: rgba(141, 51, 114, 0.3);
-    font-size: clamp(9px, 1rem, 1rem);
+  margin-top: auto;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(141, 51, 114, 0.3);
+  font-size: clamp(9px, 1rem, 1rem);
 }
 
 .photoCredit {
-    padding-right: 3px;
+  padding-right: 3px;
 }
 
 .apiCredit {
-    padding-left: 3px;
+  padding-left: 3px;
 }
 
 .footer a:link {
-    color: rgba(176, 18, 174, 0.911);
+  color: rgba(176, 18, 174, 0.911);
 }
 
 .footer a:hover {
-    color: magenta;
+  color: magenta;
 }
