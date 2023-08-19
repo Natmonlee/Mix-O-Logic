@@ -32,7 +32,7 @@
             
         </div>
         <div id="submitButton">
-            <input type="button" value="Search" onClick="submitRequest(document.getElementById('searchTextInputBox').value, document.querySelector('input[name=cocktail]:checked').value)" >
+            <input type="button" value="Search" onClick="callSubmitRequest()" >
         </div>
     </div>
     <div id="resultsList">
@@ -47,5 +47,26 @@
             Life Of Pix
         </div>
         <script src="./JS/javascript.js" type="text/javascript"></script>
+
+        
+        <script type="text/javascript">
+            // This wraps the call to the back end scripts to simplify the html.
+            callSubmitRequest= ()=>{
+                submitRequest(document.getElementById('searchTextInputBox').value, document.querySelector('input[name=cocktail]:checked').value);
+            };
+            
+            // Adding event listeners here instead of in the script to make the front end code closer to the back end.
+            document.getElementById('searchTextInputBox').addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    callSubmitRequest();
+                }                    
+            });
+
+            document.getElementById('radioButtons').addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    callSubmitRequest();
+                }                    
+            });
+        </script>
 </body>
 </html>

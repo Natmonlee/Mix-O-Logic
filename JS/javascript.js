@@ -38,7 +38,7 @@ const submitRequest = async (searchString, searchMethod) => {
             }
             else {                                
                 for (let recipe of finalResponse) {                    
-                    var recipeCard = processRecipe(recipe);
+                    var recipeCard = buildCoctailcardFromRecipe(recipe);
                     resultsDiv.appendChild(recipeCard);
                 }
 
@@ -75,11 +75,11 @@ const getIngredientList = (ingredients) => {
     const numberOfIngredients = ingredients.length;
 
     for (let ingredientNumber = 0; ingredientNumber < numberOfIngredients; ingredientNumber++) {
+        breakLine = ingredientNumber === numberOfIngredients ? "" : "<br>";
         const currentIngredient = ingredients[ingredientNumber];
-        ingredientsList += `•${currentIngredient}`;
+        ingredientsList += `•${currentIngredient}${breakLine}`;
     }
 
-    ingredientsList += `<br>`;
     return ingredientsList;
 }
 
@@ -109,62 +109,82 @@ const createCoctailCardBody = (cardFront, cardBack)=>{
     return cardBody;
 }
 
-const processRecipe = (recipe) => {
-    let ingredientsList = getIngredientList(recipe.ingredients);
-
-    let cardFront = document.createElement('div');
-    cardFront.classList.add("front", "side");
-
-    let frontContent = document.createElement('div');
-    frontContent.classList.add("content");
-
-    let cocktailNameFront = document.createElement('h1');
-    cocktailNameFront.innerHTML = `${recipe.name}`;
-    let subheadingFront = document.createElement('h2');
-    subheadingFront.innerHTML = 'Ingredients';
-    let cocktailIngredients = document.createElement('p');
-    cocktailIngredients.classList.add("ingredients");
-    cocktailIngredients.innerHTML = ingredientsList;
-    let flipInstructionFront = document.createElement('div');
+const createCocktailCardFront = (recipe)=>{    
+    const card = document.createElement('div');
+    
+    card.classList.add("front", "side");
+    
+    const flipInstructionFront = document.createElement('div');
+    
     flipInstructionFront.classList.add("flipInstruction");
     flipInstructionFront.innerHTML = 'Flip for instructions';
 
-    let cardBack = document.createElement('div');
-    cardBack.classList.add("back", "side");
+    const content = document.createElement('div');
 
-    let backContent = document.createElement('div');
+    content.classList.add("content");    
+
+    const cocktailNameFront = document.createElement('h1');
+
+    cocktailNameFront.innerHTML = `${recipe.name}`;    
+    content.appendChild(cocktailNameFront);
+
+    const subheadingFront = document.createElement('h2');
+    subheadingFront.innerHTML = 'Ingredients';
+    content.appendChild(subheadingFront);
+
+    const cocktailIngredients = document.createElement('p');
+
+    cocktailIngredients.classList.add("ingredients");
+    cocktailIngredients.innerHTML = getIngredientList(recipe.ingredients);
+
+    content.appendChild(cocktailIngredients);
+
+    card.appendChild(content);
+    card.appendChild(flipInstructionFront);
+
+    return card;
+}
+
+const createCocktailCardBack = (recipe)=>{    
+    const card = document.createElement('div');
+    card.classList.add("back", "side");
+
+    const backContent = document.createElement('div');
     backContent.classList.add("content");
 
-    let cocktailNameBack = document.createElement('h1');
+    const cocktailNameBack = document.createElement('h1');
     cocktailNameBack.innerHTML = `${recipe.name}`;
-    let subheadingBack = document.createElement('h2');
+
+    const subheadingBack = document.createElement('h2');
     subheadingBack.innerHTML = 'Instructions';
-    let cocktailInstructions = document.createElement('p');
+
+    const cocktailInstructions = document.createElement('p');
     cocktailInstructions.classList.add("instructions");
     cocktailInstructions.innerHTML = recipe.instructions;
-    let flipInstructionBack = document.createElement('div');
+
+    const flipInstructionBack = document.createElement('div');
     flipInstructionBack.classList.add("flipInstruction");
     flipInstructionBack.innerHTML = 'Flip for ingredients';
 
-
-
-    cardFront.appendChild(frontContent);
-    cardBack.appendChild(backContent);
-
-    frontContent.appendChild(cocktailNameFront);
-    frontContent.appendChild(subheadingFront);
-    frontContent.appendChild(cocktailIngredients);
-    cardFront.appendChild(flipInstructionFront);
+    card.appendChild(backContent);
 
     backContent.appendChild(cocktailNameBack);
     backContent.appendChild(subheadingBack);
     backContent.appendChild(cocktailInstructions);
-    cardBack.appendChild(flipInstructionBack);
+
+    card.appendChild(flipInstructionBack);
+
+    return card;
+}
+
+const buildCoctailcardFromRecipe = (recipe) => {
+
+    const cardBack = createCocktailCardBack(recipe);
+    const cardFront = createCocktailCardFront(recipe);
     
     const cardBody = createCoctailCardBody(cardFront, cardBack);
 
-    let cocktailCard = createCocktailCard(cardBody);
-    
+    const cocktailCard = createCocktailCard(cardBody);    
     
     return cocktailCard;    
 }
