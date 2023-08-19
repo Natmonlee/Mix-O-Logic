@@ -1,12 +1,16 @@
 const textInput = document.getElementById("inputBox");
 const resultsDiv = document.getElementById('resultsList');
+
 let flipInstructionHeight;
 
-const getResult = async () => {
+const submitRequest = async () => {
+
     resultsDiv.innerHTML = "";
+
     const textInputValue = inputBox.value;
     const searchMethod = document.querySelector("input[name='cocktail']:checked").value;
     const endpoint = "https://api.api-ninjas.com/v1/cocktail?" + searchMethod + "=" + textInputValue;
+
     try {
         const response = await fetch(endpoint, {
             method: "GET",
@@ -14,6 +18,7 @@ const getResult = async () => {
                 "X-Api-Key": "E6CyLZAZwxU0FySnN6w0IQ==Afe3GoBzy0YapmO8"
             }
         });
+
         if (response.ok) {
             const finalResponse = await response.json();
             if (finalResponse.length === 0) {
@@ -123,16 +128,15 @@ const getResult = async () => {
         throw new Error('Request failed!');
     };
 }
-textInput.addEventListener("keypress", event => {
-    if (event.key === "Enter") {
-        getResult();
-    }
-})
-radioButtons.addEventListener("keypress", event => {
-    if (event.key === "Enter") {
-        getResult();
-    }
-})
-const submitButton = document.getElementById("submitButton");
-submitButton.addEventListener("click", getResult);
 
+// textInput.addEventListener("keypress", event => {
+//     if (event.key === "Enter") {
+//         getResult();
+//     }
+// })
+
+// radioButtons.addEventListener("keypress", event => {
+//     if (event.key === "Enter") {
+//         getResult();
+//     }
+// })
