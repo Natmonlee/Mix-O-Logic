@@ -23,12 +23,16 @@
             <input type="text" type="submit" id="searchTextInputBox" class="textInput" name="inputBox" value="" required autofocus>
         </div>
         <div id="radioButtons">
-            <input type="radio" id="ingredients" name="cocktail" value="ingredients" checked><label
-                for="ingredients">Ingredients</label>
-            <input type="radio" id="name" name="cocktail" value="name"><label for="name">Name</label>
+            
+            <input type="radio" id="ingredients" name="cocktail" value="ingredients" checked>
+            <label for="ingredients">Ingredients</label>
+            
+            <input type="radio" id="name" name="cocktail" value="name">
+            <label for="name">Name</label>
+            
         </div>
         <div id="submitButton">
-            <input type="button" value="Search" onClick="submitRequest(document.getElementById('searchTextInputBox').value)" >
+            <input type="button" value="Search" onClick="submitRequest(document.getElementById('searchTextInputBox').value, document.querySelector('input[name=cocktail]:checked').value)" >
         </div>
     </div>
     <div id="resultsList">
