@@ -36,80 +36,9 @@ const submitRequest = async (searchString, searchMethod) => {
             if (finalResponse.length === 0) {
                 resultsList.innerHTML = "Sorry, your search returned no results!";
             }
-            else {                
-                for (const number of finalResponse) {
-                    let ingredientsList = '';
-                    for (let i = 0; i < number.ingredients.length; i++) {
-                        if (i === number.ingredients.length - 1) {
-                            ingredientsList += `•${number.ingredients[i]}`;
-                        } else {
-                            ingredientsList += `•${number.ingredients[i]}<br>`;
-                        }
-                    }
-
-                    let cocktailCard = document.createElement('div');
-                    cocktailCard.classList.add("cocktailCard");
-
-                    let cardInner = document.createElement('div');
-                    cardInner.classList.add("innerDiv", "transformAnimation", "toResize");
-
-                    let cardFront = document.createElement('div');
-                    cardFront.classList.add("front", "side");
-
-                    let frontContent = document.createElement('div');
-                    frontContent.classList.add("content");
-
-                    let cocktailNameFront = document.createElement('h1');
-                    cocktailNameFront.innerHTML = `${number.name}`;
-                    let subheadingFront = document.createElement('h2');
-                    subheadingFront.innerHTML = 'Ingredients';
-                    let cocktailIngredients = document.createElement('p');
-                    cocktailIngredients.classList.add("ingredients");
-                    cocktailIngredients.innerHTML = ingredientsList;
-                    let flipInstructionFront = document.createElement('div');
-                    flipInstructionFront.classList.add("flipInstruction");
-                    flipInstructionFront.innerHTML = 'Flip for instructions';
-
-                    let cardBack = document.createElement('div');
-                    cardBack.classList.add("back", "side");
-
-                    let backContent = document.createElement('div');
-                    backContent.classList.add("content");
-
-                    let cocktailNameBack = document.createElement('h1');
-                    cocktailNameBack.innerHTML = `${number.name}`;
-                    let subheadingBack = document.createElement('h2');
-                    subheadingBack.innerHTML = 'Instructions';
-                    let cocktailInstructions = document.createElement('p');
-                    cocktailInstructions.classList.add("instructions");
-                    cocktailInstructions.innerHTML = number.instructions;
-                    let flipInstructionBack = document.createElement('div');
-                    flipInstructionBack.classList.add("flipInstruction");
-                    flipInstructionBack.innerHTML = 'Flip for ingredients';
-
-                    resultsDiv.appendChild(cocktailCard);
-                    cocktailCard.appendChild(cardInner);
-
-                    cardInner.appendChild(cardFront);
-                    cardInner.appendChild(cardBack);
-
-                    cardFront.appendChild(frontContent);
-                    cardBack.appendChild(backContent);
-
-                    frontContent.appendChild(cocktailNameFront);
-                    frontContent.appendChild(subheadingFront);
-                    frontContent.appendChild(cocktailIngredients);
-                    cardFront.appendChild(flipInstructionFront);
-
-                    backContent.appendChild(cocktailNameBack);
-                    backContent.appendChild(subheadingBack);
-                    backContent.appendChild(cocktailInstructions);
-                    cardBack.appendChild(flipInstructionBack);
-
-                    function rotateCard() {
-                        cardInner.classList.toggle("rotate");
-                    }
-                    cocktailCard.addEventListener("click", rotateCard);
+            else {                                
+                for (let recipe of finalResponse) {                    
+                    processRecipe(recipe);
                 }
 
                 function sizeDivs() {
@@ -138,6 +67,87 @@ const submitRequest = async (searchString, searchMethod) => {
         console.log(error);
         throw new Error('Request failed!');
     };
+}
+
+const getIngredientList = (ingredients) => {
+    let ingredientsList = "";
+    const numberOfIngredients = ingredients.length;
+
+    for (let ingredientNumber = 0; ingredientNumber < numberOfIngredients; ingredientNumber++) {
+        const currentIngredient = ingredients[ingredientNumber];
+        ingredientsList += `•${currentIngredient}`;
+    }
+
+    ingredientsList += `<br>`;
+    return ingredientsList;
+}
+
+const processRecipe = (recipe) => {
+    let ingredientsList = getIngredientList(recipe.ingredients);    
+
+    let cocktailCard = document.createElement('div');
+    cocktailCard.classList.add("cocktailCard");
+
+    let cardInner = document.createElement('div');
+    cardInner.classList.add("innerDiv", "transformAnimation", "toResize");
+
+    let cardFront = document.createElement('div');
+    cardFront.classList.add("front", "side");
+
+    let frontContent = document.createElement('div');
+    frontContent.classList.add("content");
+
+    let cocktailNameFront = document.createElement('h1');
+    cocktailNameFront.innerHTML = `${recipe.name}`;
+    let subheadingFront = document.createElement('h2');
+    subheadingFront.innerHTML = 'Ingredients';
+    let cocktailIngredients = document.createElement('p');
+    cocktailIngredients.classList.add("ingredients");
+    cocktailIngredients.innerHTML = ingredientsList;
+    let flipInstructionFront = document.createElement('div');
+    flipInstructionFront.classList.add("flipInstruction");
+    flipInstructionFront.innerHTML = 'Flip for instructions';
+
+    let cardBack = document.createElement('div');
+    cardBack.classList.add("back", "side");
+
+    let backContent = document.createElement('div');
+    backContent.classList.add("content");
+
+    let cocktailNameBack = document.createElement('h1');
+    cocktailNameBack.innerHTML = `${recipe.name}`;
+    let subheadingBack = document.createElement('h2');
+    subheadingBack.innerHTML = 'Instructions';
+    let cocktailInstructions = document.createElement('p');
+    cocktailInstructions.classList.add("instructions");
+    cocktailInstructions.innerHTML = recipe.instructions;
+    let flipInstructionBack = document.createElement('div');
+    flipInstructionBack.classList.add("flipInstruction");
+    flipInstructionBack.innerHTML = 'Flip for ingredients';
+
+    resultsDiv.appendChild(cocktailCard);
+    cocktailCard.appendChild(cardInner);
+
+    cardInner.appendChild(cardFront);
+    cardInner.appendChild(cardBack);
+
+    cardFront.appendChild(frontContent);
+    cardBack.appendChild(backContent);
+
+    frontContent.appendChild(cocktailNameFront);
+    frontContent.appendChild(subheadingFront);
+    frontContent.appendChild(cocktailIngredients);
+    cardFront.appendChild(flipInstructionFront);
+
+    backContent.appendChild(cocktailNameBack);
+    backContent.appendChild(subheadingBack);
+    backContent.appendChild(cocktailInstructions);
+    cardBack.appendChild(flipInstructionBack);
+
+    function rotateCard() {
+        cardInner.classList.toggle("rotate");
+    }
+    cocktailCard.addEventListener("click", rotateCard);
 }
 
 // textInput.addEventListener("keypress", event => {
