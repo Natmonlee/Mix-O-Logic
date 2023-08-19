@@ -38,7 +38,8 @@ const submitRequest = async (searchString, searchMethod) => {
             }
             else {                                
                 for (let recipe of finalResponse) {                    
-                    processRecipe(recipe);
+                    var recipeCard = processRecipe(recipe);
+                    resultsDiv.appendChild(recipeCard);
                 }
 
                 function sizeDivs() {
@@ -82,14 +83,34 @@ const getIngredientList = (ingredients) => {
     return ingredientsList;
 }
 
+const createCocktailCard = (child)=>{
+    const card = document.createElement('div');
+    card.classList.add("cocktailCard");
+    
+    card.appendChild(child);
+
+    function rotateCard() {
+        child.classList.toggle("rotate");
+    }
+    
+    card.addEventListener("click", rotateCard);
+
+    return card;
+}
+
+const createCoctailCardBody = (cardFront, cardBack)=>{    
+    const cardBody = document.createElement('div');
+
+    cardBody.classList.add("innerDiv", "transformAnimation", "toResize");
+
+    cardBody.appendChild(cardFront);
+    cardBody.appendChild(cardBack);
+
+    return cardBody;
+}
+
 const processRecipe = (recipe) => {
-    let ingredientsList = getIngredientList(recipe.ingredients);    
-
-    let cocktailCard = document.createElement('div');
-    cocktailCard.classList.add("cocktailCard");
-
-    let cardInner = document.createElement('div');
-    cardInner.classList.add("innerDiv", "transformAnimation", "toResize");
+    let ingredientsList = getIngredientList(recipe.ingredients);
 
     let cardFront = document.createElement('div');
     cardFront.classList.add("front", "side");
@@ -125,11 +146,7 @@ const processRecipe = (recipe) => {
     flipInstructionBack.classList.add("flipInstruction");
     flipInstructionBack.innerHTML = 'Flip for ingredients';
 
-    resultsDiv.appendChild(cocktailCard);
-    cocktailCard.appendChild(cardInner);
 
-    cardInner.appendChild(cardFront);
-    cardInner.appendChild(cardBack);
 
     cardFront.appendChild(frontContent);
     cardBack.appendChild(backContent);
@@ -143,11 +160,13 @@ const processRecipe = (recipe) => {
     backContent.appendChild(subheadingBack);
     backContent.appendChild(cocktailInstructions);
     cardBack.appendChild(flipInstructionBack);
+    
+    const cardBody = createCoctailCardBody(cardFront, cardBack);
 
-    function rotateCard() {
-        cardInner.classList.toggle("rotate");
-    }
-    cocktailCard.addEventListener("click", rotateCard);
+    let cocktailCard = createCocktailCard(cardBody);
+    
+    
+    return cocktailCard;    
 }
 
 // textInput.addEventListener("keypress", event => {
