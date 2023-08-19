@@ -1,6 +1,16 @@
+const createGetRequest = {
+    method: "GET",
+    headers: {
+        "X-Api-Key": "E6CyLZAZwxU0FySnN6w0IQ==Afe3GoBzy0YapmO8"
+    }}
+
 const resultsDiv = document.getElementById('resultsList');
 
-const submitRequest = async (searchString) => {    
+let fetchRecipesFrom = async(endpoint)=>{
+    return await fetch(endpoint, createGetRequest);
+}
+
+const submitRequest = async (searchString, searchMethod) => {    
     resultsDiv.innerHTML = "";
 
     // In javascript, this will check if the object is:
@@ -11,16 +21,15 @@ const submitRequest = async (searchString) => {
         return;
     }
     
-    const searchMethod = document.querySelector("input[name='cocktail']:checked").value;
+    if (!searchMethod) {        
+        resultsList.innerHTML = "Cannot return results without knowing the search type.";
+        return;
+    }    
+    
     const endpoint = "https://api.api-ninjas.com/v1/cocktail?" + searchMethod + "=" + searchString;
 
     try {
-        const response = await fetch(endpoint, {
-            method: "GET",
-            headers: {
-                "X-Api-Key": "E6CyLZAZwxU0FySnN6w0IQ==Afe3GoBzy0YapmO8"
-            }
-        });
+        const response = await fetchRecipesFrom(endpoint);
 
         if (response.ok) {
             const finalResponse = await response.json();
