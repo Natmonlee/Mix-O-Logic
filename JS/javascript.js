@@ -1,11 +1,15 @@
-const textInput = document.getElementById("searchTextInput");
 const resultsDiv = document.getElementById('resultsList');
 
-let flipInstructionHeight;
-
-const submitRequest = async (searchString) => {
-    console.log("Start: " + searchString)
+const submitRequest = async (searchString) => {    
     resultsDiv.innerHTML = "";
+
+    // In javascript, this will check if the object is:
+    // empty string, false, 0, null or undefined. 
+    // If the value passed in is empty, we can return an error here.
+    if (!searchString) {        
+        resultsList.innerHTML = "Cannot return results without input.";
+        return;
+    }
     
     const searchMethod = document.querySelector("input[name='cocktail']:checked").value;
     const endpoint = "https://api.api-ninjas.com/v1/cocktail?" + searchMethod + "=" + searchString;

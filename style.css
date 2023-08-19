@@ -52,7 +52,7 @@ body {
   position: relative;
 }
 
-#textInput {
+.textInput {
   display: inline;
 }
 
