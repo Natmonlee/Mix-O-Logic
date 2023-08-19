@@ -19,8 +19,8 @@
             by commas (e.g. vodka OR vodka,lime juice)<br> for up to 10 recipes of cocktails matching your input!</p>
     </div>
     <div class="formContent">
-        <div id="textInput">
-            <input type="text" type="submit" id="inputBox" name="inputBox" value="" required autofocus>
+        <div id="searchTextInputDiv">
+            <input type="text" type="submit" id="searchTextInputBox" name="inputBox" value="" required autofocus>
         </div>
         <div id="radioButtons">
             <input type="radio" id="ingredients" name="cocktail" value="ingredients" checked><label
@@ -28,7 +28,7 @@
             <input type="radio" id="name" name="cocktail" value="name"><label for="name">Name</label>
         </div>
         <div id="submitButton">
-            <input type="button" value="Search" onClick="submitRequest()">
+            <input type="button" value="Search" onClick="submitRequest(document.getElementById('searchTextInputBox').value)" >
         </div>
     </div>
     <div id="resultsList">

@@ -1,15 +1,14 @@
-const textInput = document.getElementById("inputBox");
+const textInput = document.getElementById("searchTextInput");
 const resultsDiv = document.getElementById('resultsList');
 
 let flipInstructionHeight;
 
-const submitRequest = async () => {
-
+const submitRequest = async (searchString) => {
+    console.log("Start: " + searchString)
     resultsDiv.innerHTML = "";
-
-    const textInputValue = inputBox.value;
+    
     const searchMethod = document.querySelector("input[name='cocktail']:checked").value;
-    const endpoint = "https://api.api-ninjas.com/v1/cocktail?" + searchMethod + "=" + textInputValue;
+    const endpoint = "https://api.api-ninjas.com/v1/cocktail?" + searchMethod + "=" + searchString;
 
     try {
         const response = await fetch(endpoint, {
@@ -24,8 +23,7 @@ const submitRequest = async () => {
             if (finalResponse.length === 0) {
                 resultsList.innerHTML = "Sorry, your search returned no results!";
             }
-            else {
-                inputBox.value = '';
+            else {                
                 for (const number of finalResponse) {
                     let ingredientsList = '';
                     for (let i = 0; i < number.ingredients.length; i++) {
