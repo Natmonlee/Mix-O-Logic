@@ -1,8 +1,8 @@
 html {
     font-size: 1vw;
-    cursor: url(./Images/cursor.png), auto;
     overflow-x: hidden;
     overflow-y: overlay;
+    cursor: url(../images/cursor.png), auto;
     height: 100%;
 }
 
@@ -11,13 +11,12 @@ body {
     font-family: "Merriweather", serif;
     display: flex;
     flex-direction: column;
-    background-image: url(./Images/landingPageBackground.jpg);
+    background-image: url(../images/background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     align-items: center;
-    cursor: url(./Images/cursor.png), auto;
     scrollbar-gutter: stable both-edges;
     margin: 0;
     height: 100%;
