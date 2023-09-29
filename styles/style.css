@@ -2,7 +2,7 @@ html {
     font-size: 1vw;
     overflow-x: hidden;
     overflow-y: overlay;
-    cursor: url(../images/cursor.png), auto;
+    cursor: url(../Images/cursor.png), auto;
     height: 100%;
 }
 
@@ -11,7 +11,7 @@ body {
     font-family: "Merriweather", serif;
     display: flex;
     flex-direction: column;
-    background-image: url(../images/background.jpg);
+    background-image: url(../Images/background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
